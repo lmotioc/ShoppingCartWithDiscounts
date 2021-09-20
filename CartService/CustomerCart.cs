@@ -19,7 +19,7 @@ public class CustomerCart
         }
     }
 
-    public List<Tuple<int, Func<decimal>>> Discounts
+    public List<Tuple<int, DiscountRule>> Discounts
     {
         get
         {
@@ -54,9 +54,18 @@ public class CustomerCart
         {
             var total =
                 Items.Select(i => i.Quantity * i.Product.Price).Sum()
-                - Discounts.Select(i => i.Item1 * i.Item2()).Sum();
+                - Discounts.Select(i => i.Item1 * i.Item2.Discount()).Sum();
+            Console.WriteLine(this.ToString());
+            Console.WriteLine($"Total: {total}");
             return total;
         }
+    }
+
+    public override string ToString()
+    {
+        var items = Items.Select(i => i.Quantity + " x " + i.Product.Name + " $" + i.Product.Price + "\n").ToList();
+        var discounts = Discounts.Select(i => i.Item1 + " x " + i.Item2.Name + "\n").ToList();
+        return $"Items \n{string.Join("", items.ToArray())} \nDiscounts \n{string.Join("", discounts.ToArray())}"; 
     }
 }
 

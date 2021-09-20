@@ -3,5 +3,5 @@ using System;
 
 public interface IDiscountChain 
 {
-    List<Tuple<int, Func<decimal>>> GetAppliedDiscounts(List<CartItem> cartItems);
+    List<Tuple<int, DiscountRule>> GetAppliedDiscounts(List<CartItem> cartItems);
 }

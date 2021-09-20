@@ -37,6 +37,7 @@ public class FakeRepo
             {
                 new DiscountRule
                 {
+                    Name = "Buy two butters and get one bread 50% off",
                     Condition = new List<CartItem> ()
                     {
                         new CartItem
@@ -54,6 +55,7 @@ public class FakeRepo
                 },
                 new DiscountRule
                 {
+                    Name = "Buy 3 milks and get 4th milk for free",
                     Condition = new List<CartItem> ()
                     {
                         new CartItem

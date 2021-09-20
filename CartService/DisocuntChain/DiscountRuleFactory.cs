@@ -1,6 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 
+
+public interface IChainFactory
+{
+    DiscountChainHandler CreateChain();
+}
+
+
 public class DiscountRuleFactory : IChainFactory 
 {
     private List<DiscountRule> _discountRules;

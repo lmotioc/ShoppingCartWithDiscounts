@@ -21,8 +21,6 @@ namespace CartService.Tests
             _repo.Setup(r => r.DiscountRules).Returns(fakeRepo.DiscountRules);
 
             _productRepo = new ProductRepo(_repo.Object);
-
-          
         }
 
         [Fact]
@@ -67,8 +65,8 @@ namespace CartService.Tests
             var discounts = _chain.GetAppliedDiscounts(cartItems);
 
             Assert.NotEmpty(discounts);
-            Assert.Equal(discounts.Count(), 1); 
-            Assert.Equal(discounts[0].Item1, 1);
+            Assert.Equal(1, discounts.Count()); 
+            Assert.Equal(1, discounts[0].Item1);
         }
 
         [Fact]
@@ -89,8 +87,8 @@ namespace CartService.Tests
             var discounts = _chain.GetAppliedDiscounts(cartItems);
 
             Assert.NotEmpty(discounts);
-            Assert.Equal(discounts.Count(), 1); 
-            Assert.Equal(discounts[0].Item1, 2);
+            Assert.Single(discounts); 
+            Assert.Equal(2, discounts[0].Item1);
         }
 
         [Fact]
@@ -115,9 +113,9 @@ namespace CartService.Tests
             var discounts = _chain.GetAppliedDiscounts(cartItems);
 
             Assert.NotEmpty(discounts);
-            Assert.Equal(discounts.Count(), 2); 
-            Assert.Equal(discounts[0].Item1, 1);
-            Assert.Equal(discounts[1].Item1, 2);
+            Assert.Equal(2, discounts.Count()); 
+            Assert.Equal(1, discounts[0].Item1);
+            Assert.Equal(2, discounts[1].Item1);
         }
     }
 }

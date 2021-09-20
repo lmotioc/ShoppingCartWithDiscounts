@@ -4,11 +4,7 @@ using System.Linq;
 
 public class DiscountRule : DiscountChainHandler
 {
+    public string Name { get; set;}
     public override List<CartItem> Condition { get; set; }
     public override Func<decimal> Discount { get; set; }
-}
-
-public interface IChainFactory
-{
-    DiscountChainHandler CreateChain();
 }
