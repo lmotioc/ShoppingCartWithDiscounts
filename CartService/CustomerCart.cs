@@ -56,15 +56,15 @@ public class CustomerCart
                 Items.Select(i => i.Quantity * i.Product.Price).Sum()
                 - Discounts.Select(i => i.Item1 * i.Item2.Discount()).Sum();
             Console.WriteLine(this.ToString());
-            Console.WriteLine($"Total: {total}");
+            Console.WriteLine($"Total: ${total}");
             return total;
         }
     }
 
     public override string ToString()
     {
-        var items = Items.Select(i => i.Quantity + " x " + i.Product.Name + " $" + i.Product.Price + "\n").ToList();
-        var discounts = Discounts.Select(i => i.Item1 + " x " + i.Item2.Name + "\n").ToList();
+        var items = Items.Select(i => i.Quantity + "\tx\t" + i.Product.Name + "\t$" + i.Product.Price + "\n").ToList();
+        var discounts = Discounts.Select(i => i.Item1 + "\tx\t" + i.Item2.Name + "\n").ToList();
         return $"Items \n{string.Join("", items.ToArray())} \nDiscounts \n{string.Join("", discounts.ToArray())}"; 
     }
 }

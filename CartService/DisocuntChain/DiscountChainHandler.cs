@@ -38,5 +38,4 @@ public abstract class DiscountChainHandler
         }
         return maxApplied;
     }
-
 }
