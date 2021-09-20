@@ -22,7 +22,10 @@ namespace CartService.Tests
 
             _productRepo = new ProductRepo(_repo.Object);
 
-            _cartService = new CustomerCart(_repo.Object);
+            var chainFactory = new DiscountRuleFactory(_repo.Object);
+            var discountChain = new ChainCreationHandler(chainFactory);
+
+            _cartService = new CustomerCart(discountChain);
         }
 
         [Fact]

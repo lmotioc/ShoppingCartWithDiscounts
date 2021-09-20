@@ -70,7 +70,12 @@ public class DiscountRuleFactory : IChainFactory
     }
 }
 
-public class ChainCreationHandler 
+public interface IDiscountChain 
+{
+    void UpdateDiscount(CustomerCart cart);
+}
+
+public class ChainCreationHandler : IDiscountChain
 {
     private readonly IChainFactory _chainFactory;
 

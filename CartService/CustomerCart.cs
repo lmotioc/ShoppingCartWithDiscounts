@@ -9,19 +9,22 @@ public class CustomerCart
     private List<CartItem> _items;
     public List<CartItem> Items
     {
-        get { return _items; }
+        get { 
+        // TODO can not call add on list
+        return _items; }
         set { _items = value; 
-        _discountChain.UpdateDiscount(this); }
+        _discountChain.UpdateDiscount(this); 
+        }
     }
+
     public List<Tuple<int, Func<decimal>>> Discounts { get; set; } = new List<Tuple<int, Func<decimal>>>();
 
-    private ChainCreationHandler _discountChain;
+    private IDiscountChain _discountChain;
 
-    public CustomerCart(IRepo repo)
+    public CustomerCart(IDiscountChain discountChain)
     {
         _items = new List<CartItem>();
-        var chainFactory = new DiscountRuleFactory(repo);
-        _discountChain = new ChainCreationHandler(chainFactory);
+        _discountChain = discountChain;
     }
 
     public CustomerCart(string customerId)
