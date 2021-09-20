@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System;
+
 public class DiscountChain : IDiscountChain
 {
     private readonly IChainFactory _chainFactory;
@@ -7,9 +10,9 @@ public class DiscountChain : IDiscountChain
         _chainFactory = chainFactory;
     }
 
-    public void UpdateDiscount(CustomerCart cart)
+    public List<Tuple<int, Func<decimal>>> GetAppliedDiscount(List<CartItem> cartItems)
     {
         var chain = _chainFactory.CreateChain();
-        chain.AddDiscount(cart);
+        return chain.GetDiscount(cartItems, new List<Tuple<int, Func<decimal>>>());
     }
 }

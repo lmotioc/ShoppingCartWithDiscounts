@@ -9,15 +9,23 @@ public class CustomerCart
     private List<CartItem> _items;
     public List<CartItem> Items
     {
-        get { 
-        // TODO can not call add on list
-        return _items; }
-        set { _items = value; 
-        _discountChain.UpdateDiscount(this); 
+        get
+        {
+            return _items;
+        }
+        set
+        {
+            _items = value;
         }
     }
 
-    public List<Tuple<int, Func<decimal>>> Discounts { get; set; } = new List<Tuple<int, Func<decimal>>>();
+    public List<Tuple<int, Func<decimal>>> Discounts
+    {
+        get
+        {
+            return _discountChain.GetAppliedDiscount(Items);
+        }
+    }
 
     private IDiscountChain _discountChain;
 

@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using System;
+
 public interface IDiscountChain 
 {
-    void UpdateDiscount(CustomerCart cart);
+    List<Tuple<int, Func<decimal>>> GetAppliedDiscount(List<CartItem> cartItems);
 }

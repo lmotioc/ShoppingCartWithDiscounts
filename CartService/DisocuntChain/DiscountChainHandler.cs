@@ -14,14 +14,15 @@ public abstract class DiscountChainHandler
         this.discountHandler = discountHandler;
     }
 
-    public CustomerCart AddDiscount(CustomerCart cart) 
+    public List<Tuple<int, Func<decimal>>> GetDiscount(List<CartItem> cartItems , List<Tuple<int, Func<decimal>>> discountRules) 
     {
-        var applies = Applies(Condition, cart.Items);
+        var applies = Applies(Condition, cartItems);
         if (applies>0)
         {
-            cart.Discounts.Add(new Tuple<int, Func<decimal>> (applies, this.Discount));
+            discountRules.Add(new Tuple<int, Func<decimal>> (applies, this.Discount));
         }
-        return discountHandler?.AddDiscount(cart);
+        discountHandler?.GetDiscount(cartItems, discountRules);
+        return discountRules;
     }
 
     private int Applies(List<CartItem> condition, List<CartItem> cartItems) 
