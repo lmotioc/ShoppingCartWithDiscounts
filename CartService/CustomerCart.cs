@@ -15,13 +15,12 @@ public class CustomerCart
     }
     public List<Tuple<int, Func<decimal>>> Discounts { get; set; } = new List<Tuple<int, Func<decimal>>>();
 
-
     private ChainCreationHandler _discountChain;
 
-    public CustomerCart()
+    public CustomerCart(IRepo repo)
     {
         _items = new List<CartItem>();
-        var chainFactory = new DiscountRuleFactory();
+        var chainFactory = new DiscountRuleFactory(repo);
         _discountChain = new ChainCreationHandler(chainFactory);
     }
 

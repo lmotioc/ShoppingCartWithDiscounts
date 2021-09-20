@@ -5,9 +5,9 @@ using System.Linq;
 public class ProductRepo
 {
     private List<Product> _products;
-    public ProductRepo()
+    public ProductRepo(IRepo repo)
     {
-        _products = FakeRepo.Products;
+        _products = repo.Products;
     }
 
     public List<Product> GetAll() {

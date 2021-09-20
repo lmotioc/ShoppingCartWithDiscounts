@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public static class FakeRepo
+public class FakeRepo
 {
-    public static List<Product> Products
+    public List<Product> Products
     {
         get
         {
@@ -30,7 +29,7 @@ public static class FakeRepo
     }
 
 
-    public static List<DiscountRule> DiscountRules
+    public List<DiscountRule> DiscountRules
     {
         get
         {

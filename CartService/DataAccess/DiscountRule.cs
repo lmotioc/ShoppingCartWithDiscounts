@@ -53,9 +53,9 @@ public interface IChainFactory
 public class DiscountRuleFactory : IChainFactory 
 {
     private List<DiscountRule> _discountRules;
-    public DiscountRuleFactory() 
+    public DiscountRuleFactory(IRepo repo) 
     {
-        _discountRules = FakeRepo.DiscountRules;
+        _discountRules = repo.DiscountRules;
     }
     public DiscountChainHandler CreateChain()
     {
