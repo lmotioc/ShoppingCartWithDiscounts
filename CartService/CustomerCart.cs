@@ -23,7 +23,7 @@ public class CustomerCart
     {
         get
         {
-            return _discountChain.GetAppliedDiscount(Items);
+            return _discountChain.GetAppliedDiscounts(Items);
         }
     }
 

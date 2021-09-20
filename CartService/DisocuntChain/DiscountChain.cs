@@ -10,7 +10,7 @@ public class DiscountChain : IDiscountChain
         _chainFactory = chainFactory;
     }
 
-    public List<Tuple<int, Func<decimal>>> GetAppliedDiscount(List<CartItem> cartItems)
+    public List<Tuple<int, Func<decimal>>> GetAppliedDiscounts(List<CartItem> cartItems)
     {
         var chain = _chainFactory.CreateChain();
         return chain.GetDiscount(cartItems, new List<Tuple<int, Func<decimal>>>());
