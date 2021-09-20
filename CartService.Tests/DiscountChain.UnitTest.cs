@@ -64,8 +64,7 @@ namespace CartService.Tests
 
             var discounts = _chain.GetAppliedDiscounts(cartItems);
 
-            Assert.NotEmpty(discounts);
-            Assert.Single(discounts); 
+            Assert.Single(discounts);
             Assert.Equal(1, discounts[0].Item1);
         }
 
